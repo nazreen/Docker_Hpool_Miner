@@ -13,6 +13,6 @@ The original repo asks you to pull directly from the github repo whereas I wante
 ## Creating Signature Key (charmichaeldylan-cdpro)
 You can run this command to retrieve your signature key.
 ```sh
-docker run --network none ghcr.io/carmichaeldylan-cdpro/docker_hpool_miner ./plot-sign -action sign -sign-mnemonic "your mnemonic here"
+docker run --network none hpool-miner ./plot-sign -action sign -sign-mnemonic "your mnemonic here"
 ```
 The `--network none` option is recommended to avoid any possibility that your mnemonic is sent in the process.
