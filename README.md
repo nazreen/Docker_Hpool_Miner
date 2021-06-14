@@ -1,40 +1,16 @@
 # Docker Hpool Miner
+original: charmichaeldylan-cdpro
 
-## Deploy
-Pull the image and download the `config.yaml`
+The original repo asks you to pull directly from the github repo whereas I wanted a repo that will build from the local Dockerfile.
 
-```sh
-docker run -d \
-   --name=hpool-miner \
-   -v {config to config.yaml file}//...config.yaml:/hpool/config.yaml:ro \
-   -v {dir to plots}:/plots \
-   ghcr.io/carmichaeldylan-cdpro/docker_hpool_miner
-```
-If runing on Unraid you must add the `--network="host"` to the config to allow for connectivity
+## Up and running (my added instructions)
+1. Pull this repo.
+2. Copy the config-example.yaml into config.yaml
+3. Paste in your apiKey and rename the minner if desired.
+4. Run `./build.sh`
+5. Run `./run.sh`
 
-## Config file
-Edit config file and add `apiKey` minus {}, change the name if you wish and change `scanMinute` to what you like. I have mine set to 1
-You can just copy this template and save as config.yaml but has to be in this format exact.
-```yaml
-path:
-- /plots/
-minerName: Docker-Miner
-apiKey: {Provided Hpool API}
-cachePath: ""
-deviceId: ""
-extraParams: {}
-log:
-  lv: debug
-  path: /plots/logs
-  name: miner.log
-url:
-  info: ""
-  submit: ""
-scanPath: true
-scanMinute: 1
-```
-
-## Creating Signature Key
+## Creating Signature Key (charmichaeldylan-cdpro)
 You can run this command to retrieve your signature key.
 ```sh
 docker run --network none ghcr.io/carmichaeldylan-cdpro/docker_hpool_miner ./plot-sign -action sign -sign-mnemonic "your mnemonic here"
